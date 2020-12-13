@@ -1,4 +1,7 @@
-from pelanggan import Pelanggan
+if __name__ == 'main':
+    from pelanggan import Pelanggan
+else:
+    from model.pelanggan import Pelanggan
 
 class Cucian(Pelanggan):
     def __init__ (self, nama, alamat, noHp, jenis, paket, tanggal, kodeCucian):
@@ -53,4 +56,3 @@ class Cucian(Pelanggan):
     def setKodeCucian(self, kodeBaru):
         self.__kodeCucian = kodeBaru
 
-cucian1 = Cucian('Dika', 'Muncar', '0123891283', 2, 'cuci+setrika', '26', 'A001')    
