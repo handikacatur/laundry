@@ -1,9 +1,9 @@
 class Pelanggan:
-    def __init__(self, nama, alamat, noHp, statusCucian):
+    def __init__(self, nama, alamat, noHp):
         self.__nama = nama
         self.__alamat = alamat
         self.__noHp = noHp
-        self.__statusCucian = statusCucian
+        self.__statusCucian = 'belum selesai'
 
     def getNama(self):
         return self.__nama

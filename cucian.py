@@ -1,16 +1,16 @@
-import pelanggan as Pelanggan
+from pelanggan import Pelanggan
 
 class Cucian(Pelanggan):
-    def __init__ (self, nama, alamat, noHp, statusCucian, jenis, berat, paket, biayaTotal, dibayar = 0, tanggal, kodeCucian, jumlah):
-        super().__init__(nama,alamat,noHp,statusCucian)
+    def __init__ (self, nama, alamat, noHp, jenis, paket, tanggal, kodeCucian):
+        super().__init__(nama, alamat, noHp)
         self.__jenis = jenis
-        self.__berat = berat
+        self.__berat = 0
         self.__paket = paket
-        self.__biayaTotal = biayaTotal
-        self.__dibayar = dibayar
+        self.__biayaTotal = 0
+        self.__dibayar = 0
         self.__tanggal = tanggal
         self.__kodeCucian = kodeCucian
-        self.__jumlah = jumlah
+        self.__jumlah = 0
 
     def getJenis(self):
         return self.__jenis
@@ -53,4 +53,4 @@ class Cucian(Pelanggan):
     def setKodeCucian(self, kodeBaru):
         self.__kodeCucian = kodeBaru
 
-    
+cucian1 = Cucian('Dika', 'Muncar', '0123891283', 2, 'cuci+setrika', '26', 'A001')    
