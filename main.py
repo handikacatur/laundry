@@ -1,6 +1,7 @@
 from model.cucian import Cucian
 from model.harga import Harga
 from model.task import Task
+import sqlite3
 
 def menu(pertamakali):
     print('Selamat datang!')
@@ -16,25 +17,11 @@ def menu(pertamakali):
 6. Keluar
 Pilihan: '''))
 
-Cucian('Dika', 'hello', '012939', 'jenis', 'paket', '2312', 'a2983')
+def fetchCucian():
+    conn = sqlite3.connect("laundry.db")
+    conn.cursor
 
-# ulangi = True
+ulangi = True
 
-# while ulangi:
-#     pilihan = menu(False)
-
-#     if pilihan == 1:
-#         pass
-#     elif pilihan == 2:
-#         pass
-#     elif pilihan == 3:
-#         pass
-#     elif pilihan == 4:
-#         pass
-#     elif pilihan == 5:
-#         pass
-#     elif pilihan == 6:
-#         ulangi = False
-#     else:
-#         print('''Pilihan tidak sesuai!
-# Masukkan pilihan angka 1-6 \n''')
+while ulangi:
+    pilihan = menu(False)

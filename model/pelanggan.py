@@ -1,30 +1,33 @@
+import sqlite3
+
 class Pelanggan:
+    countPelanggan = 0
     def __init__(self, nama, alamat, noHp):
-        self.__nama = nama
-        self.__alamat = alamat
-        self.__noHp = noHp
-        self.__statusCucian = 'belum selesai'
+        self._id = countPelanggan + 1
+        self._nama = nama
+        self._alamat = alamat
+        self._noHp = noHp
+        self.createTablePelanggan()
 
-    def getNama(self):
-        return self.__nama
+        countPelanggan += 1
 
-    def setNama(self, namaBaru):
-        self.__nama = namaBaru
+    def createTablePelanggan(self):
+        conn = sqlite3.connect("laundry.db")
+        cur = conn.cursor()
+        cur.execute("CREATE TABLE IF NOT EXISTS pelanggan(idPelanggan INT NOT NULL PRIMARY KEY, nama TEXT NOT NULL, alamat TEXT NOT NULL, noHP TEXT NOT NULL)")
+        conn.commit()
+        conn.close()
 
-    def getAlamat(self):
-        return self.__alamat
+    def getPelanggan(self):
+        return [self._nama, self._alamat, self._noHp, self._kodeCucian]
+    
+    def updatePelanggan(self, nama, alamat, noHp):
+        conn = sqlite3.connect("laundry.db")
+        cur = conn.cursor()
+        cur.execute("UPDATE pelanggan SET nama=?, alamat=?, noHp=? WHERE idPelanggan=?", (nama, alamat, noHp, self._id))
+        conn.execute()
+        conn.close()
 
-    def setAlamat(self, alamatBaru):
-        self.__alamat = alamatBaru
-
-    def getNoHp(self):
-        return self.__noHp
-
-    def setNoHp(self, noBaru):
-        self.__noHp = noBaru
-
-    def getStatus(self):
-        return self.__statusCucian
-
-    def setStatus(self, status):
-        self.__statusCucian = status
+        self._nama = nama
+        self._alamat = alamat
+        self._noHp = noHp
