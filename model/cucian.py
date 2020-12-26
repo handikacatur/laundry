@@ -1,7 +1,21 @@
-if __name__ == 'main':
+import sqlite3
+if __name__ == '__main__':
     from pelanggan import Pelanggan
 else:
     from model.pelanggan import Pelanggan
+
+def createTable():
+    conn = sqlite3.connect("laundry.db")
+    cur = conn.cursor()
+    cur.execute("""CREATE TABLE IF NOT EXISTS cucian(nama TEXT NOT NULL,
+alamat TEXT NOT NULL,
+noHp TEXT NOT NULL,
+jenis TEXT,
+paket TEXT,
+tanggal TEXT,
+kodeCucian TEXT NOT NULL PRIMARY KEY)""")
+    conn.commit()
+    conn.close()
 
 class Cucian(Pelanggan):
     def __init__ (self, nama, alamat, noHp, jenis, paket, tanggal, kodeCucian):
@@ -14,6 +28,7 @@ class Cucian(Pelanggan):
         self.__tanggal = tanggal
         self.__kodeCucian = kodeCucian
         self.__jumlah = 0
+        createTable()
 
     def getJenis(self):
         return self.__jenis
@@ -55,4 +70,3 @@ class Cucian(Pelanggan):
 
     def setKodeCucian(self, kodeBaru):
         self.__kodeCucian = kodeBaru
-
