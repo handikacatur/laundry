@@ -1,22 +1,43 @@
 import sqlite3
 
 class Harga:
-    def __init__(self, kilo, cuci, cuciSetrika):
+    def __init__(self):
         self.harga = {
-            'per_kilo': kilo,
-            'cuci': cuci,
-            'cuci_setrika': cuciSetrika
+            'cuci': 0,
+            'cuci_setrika': 0
         }
+        self.createTableHarga()
 
     def createTableHarga(self):
         conn = sqlite3.connect("laundry.db")
         cur = conn.cursor()
-        cur.execute("CREATE TABLE IF NOT EXISTS harga(id INT NOT NULL PRIMARY KEY, per_kilo INT NOT NULL, cuci INT NOT NULL, cuci_setrika INT NOT NULL)", (self.harga['per_kilo'], self.harga['cucian'], self.harga['cuci_setrika']))
+        cur.execute("CREATE TABLE IF NOT EXISTS harga(idHarga INTEGER PRIMARY KEY AUTOINCREMENT, cuci INT NOT NULL, cuci_setrika INT NOT NULL)")
+        conn.commit()
+        conn.close()
 
-    def setHarga(self, kilo, cuci, cuciSetrika):
-        self.harga['per_kilo'] = kilo,
-        self.harga['cuci'] = cuci,
+    def insert(self, cuci, cuciSetrika):
+        conn = sqlite3.connect("laundry.db")
+        cur = conn.cursor()
+        cur.execute("INSERT INTO harga(cuci, cuci_setrika) VALUES(?,?)", (cuci, cuciSetrika))
+        conn.commit()
+        conn.close()
+
+        self.harga['cuci'] = cuci
         self.harga['cuci_setrika'] = cuciSetrika
 
-    def getHarga(self, pencarian):
-        return self.harga[pencarian]
+    def update(self, cuci=None, cuciSetrika=None):
+        self.harga['cuci'] = cuci if cuci != None else self.harga['cuci']
+        self.harga['cuci_setrika'] = cuciSetrika if cuciSetrika != None else self.harga['cuci_setrika']
+
+        conn = sqlite3.connect("laundry.db")
+        cur = conn.cursor()
+        cur.execute("UPDATE harga SET cuci=?, cuci_setrika=? WHERE idHarga=1", (self.harga['cuci'], self.harga['cuci_setrika']))
+        conn.commit()
+        conn.close()
+
+    def getHarga(self):
+        return self.harga
+
+    def setHarga(self, cuci, cuci_setrika):
+        self.harga['cuci'] = cuci
+        self.harga['cuci_setrika'] = cuci_setrika
