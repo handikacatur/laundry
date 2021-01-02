@@ -7,7 +7,7 @@ from datetime import datetime
 def menu():
     global pertamakali
     global harga
-    
+
     if pertamakali:
         print('Selamat datang!')
         print('Silakan atur harga terlebih dahulu')
@@ -143,6 +143,7 @@ while True:
         cucian = tambahData()
         cucian = cucian.getDetail()
         jumlah = str(cucian['jumlah'])+' Kg' if cucian['jenis'] == 'perkilo' else str(cucian['jumlah'])+' Biji'
+        print(cucian['nama'])
         print(f'''\n{'='*30}
 Kode cucian\t: {cucian['kode']}
 Id pelanggan\t: {cucian['idPelanggan']}
