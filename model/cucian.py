@@ -5,7 +5,7 @@ from datetime import datetime
 
 class Cucian(Pelanggan):
     def __init__ (self, jenis, paket, tanggal, jumlah, biayaTotal, nama=None, alamat=None, noHp=None, kodeCucian=None, idPelanggan=None):
-        super().__init__(nama, alamat, noHp)
+        super().__init__(nama, alamat, noHp, idPelanggan)
         self._jenis = jenis
         self._paket = paket
         self._biayaTotal = biayaTotal
@@ -72,9 +72,9 @@ class Cucian(Pelanggan):
             cur.execute("SELECT nama, alamat, noHp FROM pelanggan WHERE idPelanggan=?", (idPelanggan))
             row = cur.fetchone()
             self._id = idPelanggan
-            self._nama = row[0][0]
-            self._alamat = row[0][1]
-            self._noHp = row[0][2]
+            self._nama = row[0]
+            self._alamat = row[1]
+            self._noHp = row[2]
 
         cur.execute("INSERT INTO cucian(jenis, paket, biayaTotal, tanggal, kodeCucian, jumlah, idPelanggan) VALUES(?, ?, ?, ?, ?, ?, ?)", (
             self._jenis,

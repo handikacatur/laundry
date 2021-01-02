@@ -166,7 +166,7 @@ Biaya total\t: Rp. {cucian['biayaTotal']}
 
     elif pilihan == 4:
         data = harga.getHarga()
-        print(f"Cuci: {data['cuci']}\nCuci + Setrika: {data['cuci_setrika']}\n")
+        print(f"Cuci: Rp. {data['cuci']}\nCuci + Setrika: Rp. {data['cuci_setrika']}\n")
 
     elif pilihan == 5:
         cuci = input('Masukkan harga paket cuci: (kosongi jika tidak diubah) ')
