@@ -5,7 +5,7 @@ from datetime import datetime
 
 class Cucian(Pelanggan):
     def __init__ (self, jenis, paket, tanggal, jumlah, biayaTotal, nama=None, alamat=None, noHp=None, kodeCucian=None, idPelanggan=None):
-        super().__init__(nama, alamat, noHp)
+        super().__init__(idPelanggan, nama, alamat, noHp)
         self._jenis = jenis
         self._paket = paket
         self._biayaTotal = biayaTotal

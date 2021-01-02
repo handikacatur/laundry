@@ -18,7 +18,7 @@ Jenis cucian\t: {data['jenis']}
 Paket\t\t: {data['paket']}
 Tanggal masuk\t: {data['tanggal']}
 Jumlah\t\t: {jumlah}
-Biaya total\t: Rp. {data['biayaTotal']}''')
+Biaya total\t: Rp. {data['biayaTotal']}\n''')
 
     def setSelesai(self, kode):
         for urutan, cucian in enumerate(self.urutan):
