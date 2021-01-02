@@ -72,6 +72,8 @@ class Cucian(Pelanggan):
             cur.execute("SELECT nama, alamat, noHp FROM pelanggan WHERE idPelanggan=?", (idPelanggan))
             row = cur.fetchone()
             self._id = idPelanggan
+            print(row)
+
             self._nama = row[0]
             self._alamat = row[1]
             self._noHp = row[2]
