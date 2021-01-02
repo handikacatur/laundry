@@ -6,6 +6,8 @@ from datetime import datetime
 
 def menu():
     global pertamakali
+    global harga
+    
     if pertamakali:
         print('Selamat datang!')
         print('Silakan atur harga terlebih dahulu')
@@ -61,11 +63,11 @@ def tambahData():
 
     while True:
         if paket == '1' and jenis == 'perkilo':
-            biayaTotal = int(jumlah) * (harga.getHarga('cuci'))
+            biayaTotal = int(jumlah) * (harga.getHarga()['cuci'])
             paket = 'cuci'
             break
         elif paket == '2' and jenis == 'perkilo':
-            biayaTotal = int(jumlah) * (harga.getHarga('cuci_setrika'))
+            biayaTotal = int(jumlah) * (harga.getHarga()['cuci_setrika'])
             paket = 'cuci+setrika'
             break
         elif paket == '1' and jenis != 'perkilo':

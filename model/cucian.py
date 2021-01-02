@@ -72,9 +72,9 @@ class Cucian(Pelanggan):
             cur.execute("SELECT nama, alamat, noHp FROM pelanggan WHERE idPelanggan=?", (idPelanggan))
             row = cur.fetchone()
             self._id = idPelanggan
-            self._nama = row[0]
-            self._alamat = row[1]
-            self._noHp = row[2]
+            self._nama = row[0][0]
+            self._alamat = row[0][1]
+            self._noHp = row[0][2]
 
         cur.execute("INSERT INTO cucian(jenis, paket, biayaTotal, tanggal, kodeCucian, jumlah, idPelanggan) VALUES(?, ?, ?, ?, ?, ?, ?)", (
             self._jenis,

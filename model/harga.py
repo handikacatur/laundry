@@ -1,16 +1,16 @@
 import sqlite3
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
 
-class TemplateHarga(ABC):
-    @abstractmethod
-    def insert(self):
-        pass
+# class TemplateHarga(ABC):
+#     @abstractmethod
+#     def insert(self):
+#         pass
 
-    @abstractmethod
-    def update(self):
-        pass
+#     @abstractmethod
+#     def update(self):
+#         pass
 
-class Harga(TemplateHarga):
+class Harga:
     def __init__(self):
         self.harga = {
             'cuci': 0,
